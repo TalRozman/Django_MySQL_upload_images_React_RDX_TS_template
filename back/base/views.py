@@ -3,6 +3,9 @@ from .models import Gallery
 from rest_framework.decorators import api_view
 from rest_framework import status
 from .serializer import GallerySerializer
+import os
+from django.conf import settings
+
 
 # Create your views here.
 @api_view(['GET','POST','PUT','DELETE'])
@@ -35,7 +38,10 @@ def gallery(request,id=-1):
                 mySerializer = Gallery.objects.get(id=int(id))
             except Gallery.DoesNotExist:
                 return Response (status=status.HTTP_404_NOT_FOUND)
-            mySerializer.delete()
+            if mySerializer.image:
+                if os.path.isfile(mySerializer.image.path):
+                    os.remove(mySerializer.image.path)
+                    mySerializer.delete()
             return Response(status=status.HTTP_200_OK)
         else:
             return Response (status=status.HTTP_400_BAD_REQUEST)
