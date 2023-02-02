@@ -1,0 +1,1 @@
+# Django_MySQL_upload_images_React_RDX_TS_template
