@@ -55,7 +55,7 @@ const MyGallery = () => {
                                         onChange={(e) => dispath(setContent(e.currentTarget.value))}
                                         required />
                                 </p>
-                                <button className="btn btn-warning" onClick={() => { const upd = new Gallery(title, content, img, id); dispath(updImageAsync(upd)); setisUpdate(false) }}>Submit</button><button className="btn btn-danger" onClick={() => setisUpdate(false)}>Cancel</button>
+                                <button className="btn btn-warning" onClick={() => { const upd = new Gallery(title, content,img, pic.id); dispath(updImageAsync(upd)); setisUpdate(false) }}>Submit</button><button className="btn btn-danger" onClick={() => setisUpdate(false)}>Cancel</button>
                             </div>
                         </div>
                     )}
